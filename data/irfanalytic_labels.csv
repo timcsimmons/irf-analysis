@@ -1,0 +1,107 @@
+Variable,Type,Label
+CMS_cert_no,Character,Provider ID
+Fac_name,Character,Provider name
+City,Character,Provider city
+State,Character,Provider state
+Zip,Character,Provider zip code
+Region,Character,Provider region
+year,Integer,Year
+N,Integer,Number of discharges
+cost_charge,Numeric,Cost-to-charge ratio
+wage_indx,Numeric,local wages relative to national avg
+Rural,Integer,Rural or urban
+dis_share,Numeric,Disproportionate share: payments for hospitals treating large % of Medicaid & uninsured patients
+census,Integer,Census region
+ownership,Character,"For Profit, Non-profit, Government"
+teaching,Numeric,Number of interns & residents relative to volume
+freestanding,Integer,Freestanding rehab hospital vs. unit within a hospital
+avg_wt,Numeric,Global severity measure for population served
+I_001_01,Numeric,Rate of pressure ulcers that are new or worsened (v1)
+I_001_01.note,Character,Note
+I_001_01.denom,Integer,Denominator
+I_001_01.start,Character,Start date
+I_001_01.end,Character,End date
+I_001_02,Numeric,Rate of pressure ulcers that are new or worsened (v2)
+I_001_02.note,Character,Note
+I_001_02.denom,Integer,Denominator
+I_001_02.numer,Integer,Numerator
+I_001_02.obs,Numeric,Observed rate
+I_001_02.start,Character,Start date
+I_001_02.end,Character,End date
+I_002_01.obs,Numeric,Patients assessed and given influenza vaccination
+I_002_01.note,Character,Note
+I_002_01.denom,Integer,Denominator
+I_002_01.numer,Integer,Numerator
+I_002_01.start,Character,Start date
+I_002_01.end,Character,End date
+I_006_01,Numeric,Catheter-associated urinary tract infections (CAUTI)
+I_006_01.note,Character,Note
+I_006_01.cilo,Numeric,SIR 95% confidence interval - lower limit
+I_006_01.ciup,Numeric,SIR 95% confidence interval - upper limit
+I_006_01.grade,Character,Comparative performance category
+I_006_01.days,Integer,
+I_006_01.N,Integer,Predicted number [2 decimal places]
+I_006_01.numer,Integer,Numerator (observed number)
+I_006_01.start,Character,Start date
+I_006_01.end,Character,End date
+I_007_01,Numeric,All-cause unplanned readmission measure for 30 days post discharge from IRFs
+I_007_01.note,Character,Note
+I_007_01.grade,Character,Comparative performance category
+I_007_01.cilo,Numeric,SIR 95% confidence interval - lower limit
+I_007_01.ciup,Numeric,SIR 95% confidence interval - upper limit
+I_007_01.N,Integer,
+I_007_01.start,Character,Start date
+I_007_01.end,Character,End date
+I_008_01,Numeric,Percentage of patients whose functional abilities were assessed and functional goals were included in their treatment plan
+I_008_01.note,Character,Note
+I_008_01.denom,Integer,Denominator
+I_008_01.numer,Integer,Numerator
+I_008_01.start,Character,Start date
+I_008_01.end,Character,End date
+I_013_01,Numeric,Percentage of IRF patients who experience one or more falls with major injury during their IRF stay
+I_013_01.note,Character,Note
+I_013_01.denom,Integer,Denominator
+I_013_01.numer,Integer,Numerator
+I_013_01.start,Character,Start date
+I_013_01.end,Character,End date
+I_014_01,Numeric,Methicillin-resistant Staphylococcus aureus (MRSA) Bacterial Infection
+I_014_01.note,Character,Note
+I_014_01.cilo,Numeric,SIR 95% confidence interval - lower limit
+I_014_01.ciup,Numeric,SIR 95% confidence interval - upper limit
+I_014_01.grade,Character,Comparative performance category
+I_014_01.days,Integer,
+I_014_01.N,Numeric,Predicted number [2 decimal places]
+I_014_01.numer,Integer,Numerator (observed number)
+I_014_01.start,Character,Start date
+I_014_01.end,Character,End date
+I_015_01,Numeric,Clostridium difficile Infection (CDI)
+I_015_01.note,Character,Note
+I_015_01.cilo,Numeric,SIR 95% confidence interval - lower limit
+I_015_01.ciup,Numeric,SIR 95% confidence interval - upper limit
+I_015_01.grade,Character,Comparative performance category
+I_015_01.days,Integer,
+I_015_01.N,Numeric,Predicted number [2 decimal places]
+I_015_01.numer,Integer,Numerator (observed number)
+I_015_01.start,Character,Start date
+I_015_01.end,Character,End date
+I_016_01,Numeric,Influenza Vaccination Coverage Among Healthcare Personnel
+I_016_01.note,Character,Note
+I_016_01.denom,Integer,Denominator
+I_016_01.numer,Integer,Numerator
+I_016_01.start,Character,Start date
+I_016_01.end,Character,End date
+I_019_01,Numeric,Rate of successful return to home and community from an IRF
+I_019_01.note,Character,Note
+I_019_01.cilo,Numeric,Lower Limit of the 95% Confidence Interval on the Risk-Standardized Discharge to Community Rate
+I_019_01.ciup,Numeric,Upper Limit of the 95% Confidence Interval on the Risk-Standardized Discharge to Community Rate
+I_019_01.obs,Numeric,Observed rate
+I_019_01.grade,Character,Comparative performance category
+I_019_01.numb,Integer,Observed number of discharges to community
+I_019_01.N,Integer,
+I_019_01.start,Character,Start date
+I_019_01.end,Character,End date
+I_020_01,Numeric,Medicare Spending Per Beneficiary (MSPB) in IRFs
+I_020_01.note,Character,Note
+I_020_01.numb,Integer,Number of eligible episodes
+I_020_01.start,Character,Start date
+I_020_01.end,Character,End date

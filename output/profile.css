@@ -1,0 +1,11 @@
+tbody > tr > th {
+    text-align: left;
+}
+
+.factor-level {
+    text-indent: 0.25in;
+}
+
+td {
+    text-align: right;
+}

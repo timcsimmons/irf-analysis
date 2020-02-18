@@ -1,0 +1,5 @@
+Variable,Types,Label
+FaciltyId,Character,Facility ID
+Year,Integer,Data year
+Measure,Character,Measure code
+Note,Character,Note on data (see IRF dictionary Table 10)

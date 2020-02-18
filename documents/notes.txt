@@ -1,0 +1,142 @@
+We briefly considered the following code for cluster
+
+# k-means on measures with grades (complete cases) [2 clusters]
+kmain <- do.call(
+    rbind,
+    lapply(split(main, main$facility.id), function(x) {
+        data.frame(
+            facility.id=x$facility.id[1],
+            cauti.avg=mean(x$cauti, na.rm=TRUE),
+            readmit30.avg=mean(x$readmit30, na.rm=TRUE),
+            cdi.avg=mean(x$cdi, na.rm=TRUE),
+            home.avg=mean(x$home, na.rm=TRUE),
+            stringsAsFactors=FALSE
+        )
+}))
+kmain <- kmain[complete.cases(kmain), ]
+row.names(kmain) <- NULL
+
+std.kmain <- do.call(cbind, lapply(kmain[-1], function(x) (x-mean(x))/sd(x)))
+
+clusters <- kmeans(kmain[-1L], centers=2L)
+kmain$cluster <- clusters$cluster
+
+unclustered.measures <- c(
+    "bedsores.v1",
+    "bedsores.v2",
+    "falls",
+    "pt.flu",
+    "functional",
+    "hc.flu",
+    "mspb")
+
+x <- merge(
+    main[c("facility.id", "year", unclustered.measures)],
+    kmain[c("facility.id", "cluster")],
+    by="facility.id")
+
+
+# HEre is the old profile plot code
+output$h1("Profile plots")
+
+# Need table of means (SE)
+
+# Profile plots to get a handle on the interactions
+# Function to fit models for table 4(?)
+t4.lme <- function(outcome, predictor, rank=FALSE) {
+    i <- complete.cases(main[c(outcome, predictor, "year")])
+    id <- main[i, "facility.id"]
+    y <- main[i, outcome]
+    if (rank) y <- rank(y)
+    x <- main[i, predictor]
+    time <- main[i, "year"]
+    t0 <- min(time)
+    time <- time - t0  # Hope for numerical stability
+
+    fit0 <- lme(y ~ time, random=~1|id, na.action=na.omit, method="ML")
+    fit <- lme(y ~ x*time, random=~1|id, na.action=na.omit, method="ML")
+    p.value <- anova(fit0, fit)[["p-value"]][2]
+
+    if (is.factor(x)) {
+        xn <- unique(x)
+    } else {
+        xn <- unname(quantile(main[[predictor]], na.rm=TRUE))[2:4]
+    }
+    p <- expand.grid(x=xn, time=0:1)
+    p$y <- predict(fit, p, level=0)
+    p$time <- p$time + t0
+
+    list(
+      summary=data.frame(
+          outcome=outcome,
+          predictor=predictor,
+          p.value=p.value,
+          stringsAsFactors=FALSE),
+      model=fit,
+      prediction=p)
+}
+
+t4.bedsores.v1 <- lapply(
+    facility.chrs,
+    function(x) t4.lme("bedsores.v1", x, rank=FALSE))
+
+t4.readmit30 <- lapply(
+    facility.chrs,
+    function(x) t4.lme("readmit30", x, rank=FALSE))
+
+t4.cauti <- lapply(
+    facility.chrs,
+    function(x) t4.lme("cauti", x, rank=FALSE))
+
+t4.cdi <- lapply(
+    facility.chrs,
+    function(x) t4.lme("cdi", x, rank=FALSE))
+
+t4.table <- data.frame(
+    bedsores.v1=sapply(t4.bedsores.v1, function(x) x$summary$p.value),
+    readmit30  =sapply(t4.readmit30,   function(x) x$summary$p.value),
+    cauti      =sapply(t4.cauti,       function(x) x$summary$p.value),
+    cdi        =sapply(t4.cdi,         function(x) x$summary$p.value))
+
+t4.p <- do.call(cbind, lapply(t4.table, format.p.value))
+row.names(t4.p) <- facility.chrs
+
+
+for (i in seq_along(facility.chrs)) {
+    z <- rbind(
+        data.frame(
+            outcome="bedsores.v1",
+            p.value=t4.bedsores.v1[[i]]$summary$p.value,
+            t4.bedsores.v1[[i]]$p,
+            stringsAsFactors=FALSE),
+        data.frame(
+            outcome="readmit30",
+            p.value=t4.readmit30[[i]]$summary$p.value,
+            t4.readmit30[[i]]$p,
+            stringsAsFactors=FALSE),
+        data.frame(
+            outcome="cauti",
+            p.value=t4.cauti[[i]]$summary$p.value,
+            t4.cauti[[i]]$p,
+            stringsAsFactors=FALSE),
+        data.frame(
+            outcome="cdi",
+            p.value=t4.cdi[[i]]$summary$p.value,
+            t4.cdi[[i]]$p,
+            stringsAsFactors=FALSE)
+    )
+    z$p.value <- format.p.value(z$p.value)
+    z$measure <- sprintf(
+        "%s (p%s%s)",
+        z$outcome,
+        ifelse(grepl("<", z$p.value), " ", " = "),
+        z$p.value)
+    plt <-lattice::xyplot(
+        y ~ time|measure, group=x, data=z, type="l",
+        auto.key=TRUE,
+        scales=list(relation="free", x=list(at=2016L:2018L)),
+        ylab="", xlab="Year", main=facility.chrs[i])
+    print(plt)
+    output$title(facility.chrs[i])
+    output$png()
+}

@@ -1,0 +1,14 @@
+cms.id,type,description,years,start.date,end.date
+002.01,process,Patients assessed and given influenza vaccination,2017,1-Oct-15,31-Mar-16
+008.01,process,Percentage of patients whose functional abilities were assessed and whose functional goals were included in their treatment plan,2018,1-Jan-17,31-Dec-17
+016.01,process,Influenza vaccination coverage among healthcare personnel,2017,1-Oct-15,31-Mar-16
+020.01,process,Medicare spending per beneficiary (MSPB) in IRFs,2018,1-Oct-15,30-Sep-17
+001.01,outcome,Rate of pressure ulcers that are new or worsened (version 1),"2016, 2017",1-Jan-15,31-Dec-16
+001.02,outcome,Rate of pressure ulcers that are new or worsened (version 2),2018,1-Oct-16,30-Sep-17
+006.01,outcome,Catheter-associated urinary tract infection (CAUTI),"2017, 2018",1-Jan-15,30-Sep-17
+007.01,outcome,Rate of potentially preventable hospital readmissions 30 days after discharge,"2016, 2017",1-Jan-13,31-Dec-15
+013.01,outcome,Percentage of patients who fell with major injury during their stay,2018,1-Jan-17,31-Dec-17
+015.01,outcome,Clostridium difficile infection (CDI),"2017, 2018",1-Jan-16,30-Sep-17
+019.01,outcome,Rate of successful return to home and community,2018,1-Oct-15,30-Sep-17
+014.01,excluded,Rate of methicillin-resistant staphylococcus aureas (MRSA) infection,,1-Jan-16,30-Sep-17
+018.01,excluded,Rate of potentially preventable hospital readmissions during IRF stay,,,

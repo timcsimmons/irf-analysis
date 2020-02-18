@@ -1,0 +1,7 @@
+Variable,Types,Label
+cms.id,Character,CMS measure code
+type,Character,Measure type
+description,Character,Measure description
+years,Character,Years data are available in irfanalytic
+start.date,Character,Start date
+end.date,Character,End date

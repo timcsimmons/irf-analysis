@@ -1,0 +1,5 @@
+Variable,Types,Label
+Measure,Character,Measure code
+Year,Integer,Data year
+Start,Character,Data collection start
+End,Character,Data collection end

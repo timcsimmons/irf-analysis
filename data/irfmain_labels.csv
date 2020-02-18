@@ -1,0 +1,38 @@
+Variable,Types,Label,Note
+facility.id,Character,Facility ID,
+year,Integer,Year,
+facility.name,Character,Facility name,
+city,Character,City,
+state,Character,State,
+zip,Character,Zip code,
+region,Character,CMS region,
+census,Integer,Census regional division,
+n.discharge,Integer,Number of patients discharged,
+cost.charge.ratio,Numeric,Cost-to-charge ratio,
+wage.index,Numeric,Local wages compared to national average,
+rural,Integer,Urban/rural,
+dsh,Numeric,Disproportionate share hospital (DSH),
+ownership,Character,Ownership type,
+teaching,Numeric,Number of interns and residents per volume,
+teaching.yn,Integer,Teaching,
+freestanding,Integer,Freestanding,
+population.severity,Numeric,Population severity,
+bedsores.v1,Numeric,Ulcers (v1),I_001_01
+bedsores.v2,Numeric,Ulcers (v2),I_001_02
+cauti,Numeric,CAUTI,I_006_01
+readmit30,Numeric,Readmission within 30 days,I_007_01
+falls,Numeric,Rate of falls with injury,I_013_01
+cdi,Numeric,Clostridium difficile infection,I_015_01
+home,Numeric,Successful return home,I_019_01
+pt.flu,Numeric,Patient flu vaccination,I_002_01
+functional,Numeric,Functional assessment,I_008_01
+hc.flu,Numeric,Healthcare provider flu vaccination,I_016_01
+mspb,Numeric,MSPB,I_020_01
+cauti.grade,Character,CAUTI grade,I_006_01.grade
+readmit30.grade,Character,Readmission within 30 days grade,I_007_01.grade
+cdi.grade,Character,Clostridium difficile infectioni grade,I_015_01.grade
+home.grade,Character,Successful return home grade,I_019_01.grade
+cauti.good,Integer,I_006_01.grade better than national,I_006_01.grade better than national
+readmit30.good,Integer,I_007_01.grade better than national,I_007_01.grade better than national
+cdi.good,Integer,I_015_01.grade better than national,I_015_01.grade better than national
+home.good,Integer,I_019_01.grade better than national,I_019_01.grade better than national
